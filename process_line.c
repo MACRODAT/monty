@@ -32,7 +32,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 				needs_completion = p->needs_completion;
 				break;
 			}
-			p++;
+			p++, ind = (_strlen(tokens[i]) > 0) ? 1 : ind;
 		}
 		if (f)
 			break;
@@ -40,6 +40,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 	}
 	if (!f)
 	{
+		if (!ind) return (0);
 		printf("L%u: unknown instruction %s\n", line_number, s);
 		exit(EXIT_FAILURE);
 	}
