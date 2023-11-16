@@ -21,7 +21,6 @@ void process_push(stack_t **stack, unsigned int line_number)
 		el->next = NULL;
 	el->prev = NULL;
 	*stack = el;
-	free(el);
 }
 
 /**
