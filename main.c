@@ -1,77 +1,103 @@
 #include "monty.h"
 
-commons_t comms;
+global_t traco;
 
 /**
- * is_digit - is it digit
- * @c: char
- * Return: 0
-*/
-int is_digit(char *c)
+ * free_traco - frees the global variables
+ *
+ * Return: no return
+ */
+void free_traco(void)
 {
-	char *p = c;
-	int ascii;
-
-	if (!p)
-		return (0);
-	if (*p == '-')
-		p++;
-	while (*p)
-	{
-		ascii = (int) *p;
-		if ((ascii < '0') || (ascii > '9'))
-			return (0);
-		p++;
-	}
-	return (1);
+	free_dlistint(traco.head);
+	free(traco.buffer);
+	fclose(traco.fd);
 }
 
 /**
- * main - entry
- * @argc: args
- * @argv: args
- * Return: 1
-*/
-int main(int argc, char *argv[])
+ * start_traco - initializes the global variables
+ *
+ * @fd: file descriptor
+ * Return: no return
+ */
+void start_traco(FILE *fd)
+{
+	traco.lifo = 1;
+	traco.cont = 1;
+	traco.arg = NULL;
+	traco.head = NULL;
+	traco.fd = fd;
+	traco.buffer = NULL;
+}
+
+/**
+ * check_input - checks if the file exists and if the file can
+ * be opened
+ *
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: file struct
+ */
+FILE *check_input(int argc, char *argv[])
 {
 	FILE *fd;
-	size_t size = 256;
-	char *line = 0;
-	int ln = 1, nlines = 0;
-	stack_t **st = 0;
 
-	st = malloc(sizeof(stack_t *));
-	if (!st)
-		endall("Error: malloc failed\n");
-	*st = 0;
 	if (argc == 1 || argc > 2)
 	{
-		free(st);
-		endall("USAGE: monty file\n");
+		dprintf(2, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
 
 	fd = fopen(argv[1], "r");
 
 	if (fd == NULL)
 	{
-		free(st);
-		PFS("Error: Can't open file %s\n", argv[1]);
+		dprintf(2, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
-	line = malloc(sizeof(char) * 1000);
-	if (!line)
-	{
-		free(st);
-		fclose(fd);
-		endall("Error: malloc failed\n");
-	}
-	comms.n = -1;
-	comms.o = 0, comms.x = fd, comms.y = line;
-	nlines = getline(&line, &size, fd);
+
+	return (fd);
+}
+
+/**
+ * main - Entry point
+ *
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 0 on success
+ */
+int main(int argc, char *argv[])
+{
+	void (*f)(stack_t **stack, unsigned int line_number);
+	FILE *fd;
+	size_t size = 256;
+	ssize_t nlines = 0;
+	char *lines[2] = {NULL, NULL};
+
+	fd = check_input(argc, argv);
+	start_traco(fd);
+	nlines = getline(&traco.buffer, &size, fd);
 	while (nlines != -1)
 	{
-		process_line(line, st, ln);
-		nlines = getline(&line, &size, fd), ln++;
+		lines[0] = _strtoky(traco.buffer, " \t\n");
+		if (lines[0] && lines[0][0] != '#')
+		{
+			f = get_opcodes(lines[0]);
+			if (!f)
+			{
+				dprintf(2, "L%u: ", traco.cont);
+				dprintf(2, "unknown instruction %s\n", lines[0]);
+				free_traco();
+				exit(EXIT_FAILURE);
+			}
+			traco.arg = _strtoky(NULL, " \t\n");
+			f(&traco.head, traco.cont);
+		}
+		nlines = getline(&traco.buffer, &size, fd);
+		traco.cont++;
 	}
-	fclose(fd), free(st), free(line);
+
+	free_traco();
+
 	return (0);
 }
