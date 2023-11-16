@@ -43,22 +43,23 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 		printFormattedString("L%u: unknown instruction %s\n", line_number, s);
 	}
 	return (process_line_cont(i, flag, ind,
-		count, tokens, needs_completion, st, line_number));
+		tokens, f, needs_completion, st, line_number));
 }
 
 /**
  * process_line_cont - process a line
  * @flag: line
  * @ind: line
- * @count: line
  * @tokens: line
  * @needs_completion: line
  * @st: e
  * @i: e
+ * @f: e
  * @line_number: e
  * Return: rr
 */
-int process_line_cont(int i, int flag, int ind, int count, char **tokens,
+int process_line_cont(int i, int flag, int ind, char **tokens,
+	void (*f)(stack_t **stack, unsigned int line_number),
 	int needs_completion, stack_t **st, unsigned int line_number)
 {
 	i++;
