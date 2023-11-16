@@ -31,11 +31,11 @@ void _sub(stack_t **duxj, unsigned int leto)
 }
 
 /**
- * get_opcodes - selects the correct opcode to perform
+ * get_opcodes - dqwerm
  *
- * @opc: opcode passed
+ * @opc: ewd
  *
- * Return: pointer to the function that executes the opcode
+ * Return: edw
  */
 void (*get_opcodes(char *opc))(stack_t **stack, unsigned int line_number)
 {
@@ -62,10 +62,10 @@ void (*get_opcodes(char *opc))(stack_t **stack, unsigned int line_number)
 	int i;
 
 	for (i = 0; indestweruct[i].opcode; i++)
-	{
 		if (_strcmp(indestweruct[i].opcode, opc) == 0)
+		{
 			break;
-	}
+		}
 
 	return (indestweruct[i].f);
 }
