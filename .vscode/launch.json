@@ -1,0 +1,18 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+	  {
+		"name": "Launch Current File with Arguments",
+		"type": "cppdbg",
+		"request": "launch",
+		"cwd": "${workspaceFolder}",
+		"program": "${workspaceFolder}/monty",
+		"environment": [],
+		"externalConsole": false,
+		"preLaunchTask": "build",
+		"args": ["000.m"] // This is where you can specify your arguments.
+
+	  }
+	]
+  }
+  
