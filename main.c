@@ -9,11 +9,17 @@ commons_t comms;
 */
 int is_digit(char *c)
 {
-	int ascii = (int) *c;
+	char *p = c;
+	int ascii;
 
-	if ((ascii >= '0') && (ascii <= '9'))
-		return (1);
-	return (0);
+	while (p)
+	{
+		ascii = (int) *p;
+		if ((ascii < '0') || (ascii > '9'))
+			return (0);
+		p++;
+	}
+	return (1);
 }
 
 /**

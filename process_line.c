@@ -86,7 +86,12 @@ int process_line_cont(int i, int flag, int ind, char **tokens,
 			if (str_cmp(tokens[i], "0") == 0 && !flag)
 				ind = 0, flag = 1;
 			else
-				ind = atoi(tokens[i++]), flag = (ind == 0) ? 0 : 1;
+			{
+				if (is_digit(tokens[i]) == 1)
+					ind = atoi(tokens[i]);
+				flag = (ind == 0) ? 0 : 1;
+				i++;
+			}
 
 		if (!flag)
 			printFormattedString("L%u: usage: push integer\n", line_number);

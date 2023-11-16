@@ -69,6 +69,7 @@ char *_strcat(char *dest, char *src);
 char **_splitString(const char *input, char *delimiter, int *tokenCount);
 int check_stuff(char ***s, int buf_size);
 int str_cmp(const char *str1, const char *str2);
+int is_digit(char *c);
 
 void endall(const char *msg);
 void printFormattedString(const char *format, ...);
