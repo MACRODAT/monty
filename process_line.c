@@ -3,7 +3,7 @@
 /**
  * process_line - process a line
  * @s: line
- * @stack: e
+ * @st: e
  * @line_number: e
  * Return: rr
 */
@@ -19,8 +19,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 	instruction_t *p;
 	void (*f)(stack_t **stack, unsigned int line_number);
 
-	f = NULL;
-	tokens = _splitString(s, " \t\n$", &count);
+	f = NULL, tokens = _splitString(s, " \t\n$", &count);
 	while (i < count)
 	{
 		p = stack;
@@ -28,8 +27,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 		{
 			if (str_cmp(p->opcode, tokens[i]) == 0)
 			{
-				f = p->f;
-				needs_completion = p->needs_completion;
+				f = p->f, needs_completion = p->needs_completion;
 				break;
 			}
 			p++, ind = (_strlen(tokens[i]) > 0) ? 1 : ind;
@@ -40,10 +38,29 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 	}
 	if (!f)
 	{
-		if (!ind) return (0);
-		printf("L%u: unknown instruction %s\n", line_number, s);
-		exit(EXIT_FAILURE);
+		if (!ind)
+			return (0);
+		printFormattedString("L%u: unknown instruction %s\n", line_number, s);
 	}
+	return (process_line_cont(i, flag, ind,
+		count, tokens, needs_completion, st, line_number));
+}
+
+/**
+ * process_line_cont - process a line
+ * @flag: line
+ * @ind: line
+ * @count: line
+ * @tokens: line
+ * @needs_completion: line
+ * @st: e
+ * @i: e
+ * @line_number: e
+ * Return: rr
+*/
+int process_line_cont(int i, int flag, int ind, int count, char **tokens,
+	int needs_completion, stack_t **st, unsigned int line_number)
+{
 	i++;
 	if (needs_completion > 0)
 	{
@@ -54,15 +71,9 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 				ind = atoi(tokens[i++]), flag = (ind == 0) ? 0 : 1;
 
 		if (!flag)
-		{
-			printf("L%u: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-
+			printFormattedString("L%u: usage: push integer\n", line_number);
 		comms.n = ind;
 	}
-	comms.n = ind;
-	f(st, line_number);
-
+	comms.n = ind, f(st, line_number);
 	return (0);
 }

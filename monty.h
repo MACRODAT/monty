@@ -4,6 +4,7 @@
 #define  _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdarg.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -72,7 +73,10 @@ int check_stuff(char ***s, int buf_size);
 int str_cmp(const char *str1, const char *str2);
 
 void endall(const char *msg);
+void printFormattedString(const char *format, ...);
 int process_line(char *s, stack_t **st, unsigned int line_number);
+int process_line_cont(int i, int flag, int ind, int count, char **tokens,
+	int needs_completion, stack_t **st, unsigned int line_number);
 
 void process_push(stack_t **stack, unsigned int line_number);
 void process_pall(stack_t **stack, unsigned int line_number);
