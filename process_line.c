@@ -19,7 +19,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 	instruction_t *p;
 	void (*f)(stack_t **stack, unsigned int line_number);
 
-	f = NULL, tokens = _splitString(s, " \t\n$", &count);
+	f = NULL, tokens = _splitString(s, " \t\n", &count);
 	while (i < count)
 	{
 		p = stack;
