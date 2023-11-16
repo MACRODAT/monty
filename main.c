@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 
 	if (fd == NULL)
 	{
-		printf("Error: Can't open file %s\n", argv[1]);
+		dprintf(2, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	line = malloc(sizeof(char) * 1000);

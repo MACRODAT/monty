@@ -13,10 +13,7 @@ void process_push(stack_t **stack, unsigned int line_number)
 
 	el = malloc(sizeof(stack_t));
 	if (!el)
-	{
-		printf("Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
+		endall("Error: malloc failed\n");
 	el->n = comms.n;
 	if (stack)
 		el->next = *stack;

@@ -1,10 +1,9 @@
-                   pall    $
-  push 3
-push 0
+                   pall  $
+  push 3 ikperw
+push 0 229
 push 1
-push 2
- push 1 
-push 234
-    push 5    $
+             pint push 1 
+push 234 pint
+    push     $
       push    6        $
 pall
