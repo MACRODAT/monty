@@ -10,7 +10,7 @@
 		"environment": [],
 		"externalConsole": false,
 		"preLaunchTask": "build",
-		"args": ["001.m"] // This is where you can specify your arguments.
+		"args": ["000.m"] // This is where you can specify your arguments.
 
 	  }
 	]

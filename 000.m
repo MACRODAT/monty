@@ -1,10 +1,10 @@
-  push 3$
+                   pall    $
+  push 3
 push 0
 push 1
 push 2
-pint
-push e$
-                   pall    $
+ push 1 
+push 234
     push 5    $
       push    6        $
-pall$
+pall

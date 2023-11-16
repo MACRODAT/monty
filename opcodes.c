@@ -36,7 +36,7 @@ void process_pall(stack_t **stack, unsigned int line_number)
 	stack_t *p = 0;
 	(void) line_number;
 
-	if (!stack)
+	if (!stack || !*stack)
 		return;
 	p = *stack;
 	do {
@@ -55,7 +55,7 @@ void process_pint(stack_t **stack, unsigned int line_number)
 	(void) line_number;
 
 	if (!stack || !*stack)
-		printFormattedString("L%u: can't pint, stack empty\n", line_number);
+		PFS("L%u: can't pint, stack empty\n", line_number);
 	p = *stack;
 	printf("%d\n", p->n);
 }

@@ -49,7 +49,9 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 			}
 			p++, ind = (_strlen(tokens[i]) > 0) ? 1 : ind;
 		}
-		if (f)
+		if (!f)
+			PFS("L%u: unknown instruction %s\n", line_number, tokens[i]);
+		else
 			break;
 		i++;
 	}
@@ -57,7 +59,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 	{
 		if (!ind)
 			return (0);
-		printFormattedString("L%u: unknown instruction %s\n", line_number, s);
+		PFS("L%u: unknown instruction %s\n", line_number, s);
 	}
 	return (process_line_cont(i, flag, ind,
 		tokens, f, needs_completion, st, line_number));
@@ -83,6 +85,7 @@ int process_line_cont(int i, int flag, int ind, char **tokens,
 	if (needs_completion > 0)
 	{
 		while (!flag && tokens[i])
+		{
 			if (str_cmp(tokens[i], "0") == 0 && !flag)
 				ind = 0, flag = 1;
 			else
@@ -92,9 +95,10 @@ int process_line_cont(int i, int flag, int ind, char **tokens,
 				flag = (ind == 0) ? 0 : 1;
 				i++;
 			}
+		}
 
 		if (!flag)
-			printFormattedString("L%u: usage: push integer\n", line_number);
+			PFS("L%u: usage: push integer\n", line_number);
 		comms.n = ind;
 	}
 	comms.n = ind, f(st, line_number);

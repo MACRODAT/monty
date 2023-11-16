@@ -6,15 +6,15 @@
 */
 void endall(const char *msg)
 {
-	fprintf(stderr, "%s", msg);
+	dprintf(2, "%s", msg);
 	exit(EXIT_FAILURE);
 }
 
 /**
- * printFormattedString - ends
+ * PFS - ends
  * @format: message
 */
-void printFormattedString(const char *format, ...)
+void PFS(const char *format, ...)
 {
 	va_list args;
 

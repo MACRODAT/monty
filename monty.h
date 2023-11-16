@@ -73,7 +73,7 @@ int str_cmp(const char *str1, const char *str2);
 int is_digit(char *c);
 
 void endall(const char *msg);
-void printFormattedString(const char *format, ...);
+void PFS(const char *format, ...);
 int process_line(char *s, stack_t **st, unsigned int line_number);
 int process_line_cont(int i, int flag, int ind, char **tokens,
 	void (*f)(stack_t **stack, unsigned int line_number),
