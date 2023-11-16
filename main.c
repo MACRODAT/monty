@@ -12,7 +12,7 @@ int is_digit(char *c)
 	char *p = c;
 	int ascii;
 
-	while (p)
+	while (*p)
 	{
 		ascii = (int) *p;
 		if ((ascii < '0') || (ascii > '9'))
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 		printf("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	line = malloc(sizeof(char) * 1000000);
+	line = malloc(sizeof(char) * 1000);
 	if (!line)
 		endall("Error: malloc failed\n");
 	comms.n = -1;

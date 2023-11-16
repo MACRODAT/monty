@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -66,7 +67,7 @@ char *_strtoky(char *s, char *d);
 int _strlen(char *s);
 char *starts_with(const char *haystack, const char *needle);
 char *_strcat(char *dest, char *src);
-char **_splitString(const char *input, char *delimiter, int *tokenCount);
+char **_splitString(char *input, const char *delimiters, int *count);
 int check_stuff(char ***s, int buf_size);
 int str_cmp(const char *str1, const char *str2);
 int is_digit(char *c);
