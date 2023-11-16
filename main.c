@@ -58,5 +58,7 @@ int main(int argc, char *argv[])
 		nlines = getline(&line, &size, fd);
 		ln++;
 	}
+	fclose(fd);
+	free(st);
 	return (0);
 }
