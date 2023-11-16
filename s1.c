@@ -1,82 +1,46 @@
 #include "monty.h"
 
 /**
- *add_dnodeint_end - add a note at the end of the duxj link list
- *@head: first position of linked list
- *@n: data to store
- *Return: a duxj linked list
+ *add_dnodeint_end - fwe
+ *@head: efw
+ *@n: fwe
+ *Return: aefw
  */
 stack_t *add_dnodeint_end(stack_t **head, const int n)
 {
-	stack_t *temp, *aux;
+	stack_t *kjsd, *aux;
 
 	if (head == NULL)
 		return (NULL);
-	temp = malloc(sizeof(stack_t));
-	if (!temp)
+	kjsd = malloc(sizeof(stack_t));
+	if (!kjsd)
 	{
 		dprintf(2, "Error: malloc failed\n");
 		free_traco();
 		exit(EXIT_FAILURE);
 	}
-	temp->n = n;
-	/*Careful with the first time*/
+	kjsd->n = n;
 	if (*head == NULL)
 	{
-		temp->next = *head;
-		temp->prev = NULL;
-		*head = temp;
+		kjsd->next = *head;
+		kjsd->prev = NULL;
+		*head = kjsd;
 		return (*head);
 	}
 	aux = *head;
 	while (aux->next)
 		aux = aux->next;
-	temp->next = aux->next;
-	temp->prev = aux;
-	aux->next = temp;
+	kjsd->next = aux->next;
+	kjsd->prev = aux;
+	aux->next = kjsd;
 	return (aux->next);
 }
 
 /**
- *add_dnodeint - add a note at the begining of the duxj link list
- *@head: first position of linked list
- *@n: data to store
- *Return: a duxj linked list
- */
-stack_t *add_dnodeint(stack_t **head, const int n)
-{
-	stack_t *temp;
-
-	if (head == NULL)
-		return (NULL);
-	temp = malloc(sizeof(stack_t));
-	if (!temp)
-	{
-		dprintf(2, "Error: malloc failed\n");
-		free_traco();
-		exit(EXIT_FAILURE);
-	}
-	temp->n = n;
-	/*Careful with the first time*/
-	if (*head == NULL)
-	{
-		temp->next = *head;
-		temp->prev = NULL;
-		*head = temp;
-		return (*head);
-	}
-	(*head)->prev = temp;
-	temp->next = (*head);
-	temp->prev = NULL;
-	*head = temp;
-	return (*head);
-}
-
-/**
- * free_dlistint - frees the duxj linked list
+ * free_dlistint - fwe
  *
- * @head: head of the list
- * Return: no return
+ * @head: weffwefwef
+ * Return: wef
  */
 void free_dlistint(stack_t *head)
 {
@@ -87,4 +51,39 @@ void free_dlistint(stack_t *head)
 		head = head->next;
 		free(tmp);
 	}
+}
+
+
+/**
+ *add_dnodeint - weffwefew
+ *@head: fweffefw
+ *@n: efwefwe
+ *Return: efwfwe
+ */
+stack_t *add_dnodeint(stack_t **head, const int n)
+{
+	stack_t *kjsd;
+
+	if (head == NULL)
+		return (NULL);
+	kjsd = malloc(sizeof(stack_t));
+	if (!kjsd)
+	{
+		dprintf(2, "Error: malloc failed\n");
+		free_traco();
+		exit(EXIT_FAILURE);
+	}
+	kjsd->n = n;
+	if (*head == NULL)
+	{
+		kjsd->next = *head;
+		kjsd->prev = NULL;
+		*head = kjsd;
+		return (*head);
+	}
+	(*head)->prev = kjsd;
+	kjsd->next = (*head);
+	kjsd->prev = NULL;
+	*head = kjsd;
+	return (*head);
 }
