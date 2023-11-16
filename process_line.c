@@ -11,6 +11,8 @@ int get_na(const char *opcode)
 		return (1);
 	if (str_cmp(opcode, "pall") == 0)
 		return (0);
+	if (str_cmp(opcode, "pint") == 0)
+		return (0);
 	return (0);
 }
 
@@ -28,6 +30,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 	instruction_t stack[] = {
 		{"push", process_push},
 		{"pall", process_pall},
+		{"pint", process_pint},
 		{"", NULL}
 	};
 	instruction_t *p;

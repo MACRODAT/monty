@@ -43,3 +43,19 @@ void process_pall(stack_t **stack, unsigned int line_number)
 		printf("%d\n", p->n);
 	} while ((p = p->next));
 }
+
+/**
+ * process_pint - fct
+ * @stack: e
+ * @line_number: e
+*/
+void process_pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *p = 0;
+	(void) line_number;
+
+	if (!stack)
+		printFormattedString("L%u: can't pint, stack empty", line_number);
+	p = *stack;
+	printf("%d\n", p->n);
+}

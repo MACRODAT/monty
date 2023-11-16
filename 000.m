@@ -1,6 +1,7 @@
-push 0$
-push 1$
-push 2$
+push 0
+push 1
+push 2
+pint
   push 3$
 push e$
                    pall    $

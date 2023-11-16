@@ -80,5 +80,6 @@ int get_na(const char *opcode);
 
 void process_push(stack_t **stack, unsigned int line_number);
 void process_pall(stack_t **stack, unsigned int line_number);
+void process_pint(stack_t **stack, unsigned int line_number);
 
 #endif
