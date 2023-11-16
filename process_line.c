@@ -91,14 +91,14 @@ int process_line_cont(int i, int flag, int ind, char **tokens,
 			else
 			{
 				if (is_digit(tokens[i]) == 1)
-					ind = atoi(tokens[i]);
-				flag = (ind == 0) ? 0 : 1;
+					ind = atoi(tokens[i]), flag = 1;
+				else if (strlen(tokens[i]) > 0)
+					f_d(st), PFS("L%u: usage: push integer\n", line_number);
 				i++;
 			}
 		}
-
 		if (!flag)
-			PFS("L%u: usage: push integer\n", line_number);
+			f_d(st), PFS("L%u: usage: push integer\n", line_number);
 		comms.n = ind;
 	}
 	comms.n = ind, f(st, line_number);
