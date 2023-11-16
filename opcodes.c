@@ -37,7 +37,7 @@ void process_pall(stack_t **stack, unsigned int line_number)
 		return;
 	p = *stack;
 	do {
-		dprintf(1, "%d\n", p->n);
+		dprintf(1, "%u\n", p->n);
 	} while ((p = p->next));
 }
 
@@ -54,5 +54,5 @@ void process_pint(stack_t **stack, unsigned int line_number)
 	if (!stack || !*stack)
 		PFS("L%u: can't pint, stack empty\n", line_number);
 	p = *stack;
-	dprintf(1, "%d\n", p->n);
+	dprintf(1, "%u\n", p->n);
 }
