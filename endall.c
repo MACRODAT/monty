@@ -6,7 +6,7 @@
 */
 void endall(const char *msg)
 {
-	printf("%s", msg);
+	fprintf(stderr, "%s", msg);
 	exit(EXIT_FAILURE);
 }
 
@@ -19,7 +19,7 @@ void printFormattedString(const char *format, ...)
 	va_list args;
 
 	va_start(args, format);
-	vprintf(format, args);
+	vfprintf(stderr, format, args);
 	va_end(args);
 	exit(EXIT_FAILURE);
 }

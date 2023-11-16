@@ -27,7 +27,7 @@ char **_splitString(const char *input, char *delimiter, int *tokenCount)
 				s[tok_count] = malloc(sizeof(char) * 1024);
 				if (!s[tok_count])
 				{
-					printf("Error: malloc failed\n"), free(_s_tmp), free(s);
+					fprintf(stderr, "Error: malloc failed\n"), free(_s_tmp), free(s);
 					return (NULL);
 				}
 				if (tok_count >= buf_size - 1)
@@ -35,7 +35,7 @@ char **_splitString(const char *input, char *delimiter, int *tokenCount)
 					buf_size *= 2, _s_tmp = (char **)realloc(s, sizeof(char *) * buf_size);
 					if (!_s_tmp)
 					{
-						printf("Error: malloc failed\n"), free(s), free(_s_tmp);
+						fprintf(stderr, "Error: malloc failed\n"), free(s), free(_s_tmp);
 						return (NULL);
 					}
 					s = _s_tmp;
@@ -67,13 +67,13 @@ int check_stuff(char ***s, int buf_size)
 	*s = (char **)malloc(sizeof(char *) * buf_size);
 	if (!*s)
 	{
-		printf("Error: malloc failed\n"), free(s);
+		fprintf(stderr, "Error: malloc failed\n"), free(s);
 		return (1);
 	}
 	(*s)[0] = (char *)malloc(sizeof(char) * 1024);
 	if (!(*s)[0])
 	{
-		printf("Error: malloc failed\n"), free(s);
+		fprintf(stderr, "Error: malloc failed\n"), free(s);
 		return (1);
 	}
 	return (0);
