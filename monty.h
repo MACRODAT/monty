@@ -56,7 +56,7 @@ typedef struct commons
 {
 		int n;
 		int o;
-		char *x;
+		FILE *x;
 		char *y;
 } commons_t;
 
@@ -79,6 +79,7 @@ int process_line_cont(int i, int flag, int ind, char **tokens,
 	void (*f)(stack_t **stack, unsigned int line_number),
 	int needs_completion, stack_t **st, unsigned int line_number);
 int get_na(const char *opcode);
+void f_d(stack_t **arr);
 
 void process_push(stack_t **stack, unsigned int line_number);
 void process_pall(stack_t **stack, unsigned int line_number);

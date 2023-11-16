@@ -61,10 +61,11 @@ int main(int argc, char *argv[])
 	if (!line)
 	{
 		free(st);
+		fclose(fd);
 		endall("Error: malloc failed\n");
 	}
 	comms.n = -1;
-	comms.o = 0, comms.x = 0, comms.y = 0;
+	comms.o = 0, comms.x = fd, comms.y = line;
 	nlines = getline(&line, &size, fd);
 	while (nlines != -1)
 	{

@@ -50,7 +50,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 			p++, ind = (_strlen(tokens[i]) > 0) ? 1 : ind;
 		}
 		if (!f)
-			PFS("L%u: unknown instruction %s\n", line_number, tokens[i]);
+			f_d(st), PFS("L%u: unknown instruction %s\n", line_number, tokens[i]);
 		else
 			break;
 		i++;
@@ -59,7 +59,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 	{
 		if (!ind)
 			return (0);
-		PFS("L%u: unknown instruction %s\n", line_number, s);
+		f_d(st), PFS("L%u: unknown instruction %s\n", line_number, s);
 	}
 	return (process_line_cont(i, flag, ind,
 		tokens, f, needs_completion, st, line_number));

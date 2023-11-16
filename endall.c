@@ -7,6 +7,8 @@
 void endall(const char *msg)
 {
 	dprintf(2, "%s", msg);
+	free(comms.y);
+	fclose(comms.x);
 	exit(EXIT_FAILURE);
 }
 
@@ -21,5 +23,26 @@ void PFS(const char *format, ...)
 	va_start(args, format);
 	vfprintf(stderr, format, args);
 	va_end(args);
+	free(comms.y);
+	fclose(comms.x);
 	exit(EXIT_FAILURE);
+}
+
+/**
+ * f_d - ends
+ * @arr: message
+*/
+void f_d(stack_t **arr)
+{
+	stack_t *current;
+
+	if (arr == NULL)
+		return;
+
+	while (*arr != NULL)
+	{
+		current = *arr;
+		*arr = current->next;
+		free(current);
+	}
 }
