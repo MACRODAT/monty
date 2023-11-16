@@ -57,7 +57,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 	{
 		if (!ind)
 			return (0);
-		printFormattedString("L%u: unknown instruction %s", line_number, s);
+		printFormattedString("L%u: unknown instruction %s\n", line_number, s);
 	}
 	return (process_line_cont(i, flag, ind,
 		tokens, f, needs_completion, st, line_number));

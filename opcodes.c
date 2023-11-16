@@ -54,8 +54,8 @@ void process_pint(stack_t **stack, unsigned int line_number)
 	stack_t *p = 0;
 	(void) line_number;
 
-	if (!stack)
-		printFormattedString("L%u: can't pint, stack empty", line_number);
+	if (!stack || !*stack)
+		printFormattedString("L%u: can't pint, stack empty\n", line_number);
 	p = *stack;
 	printf("%d\n", p->n);
 }
