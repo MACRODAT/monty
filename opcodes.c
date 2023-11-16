@@ -40,6 +40,6 @@ void process_pall(stack_t **stack, unsigned int line_number)
 		return;
 	p = *stack;
 	do {
-		printf("%d", p->n);
+		printf("%d\n", p->n);
 	} while ((p = p->next));
 }
