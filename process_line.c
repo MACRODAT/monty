@@ -1,6 +1,20 @@
 #include "monty.h"
 
 /**
+ * get_na - g
+ * @opcode:eejkop
+ * Return: eo
+*/
+int get_na(const char *opcode)
+{
+	if (str_cmp(opcode, "push") == 0)
+		return (1);
+	if (str_cmp(opcode, "pall") == 0)
+		return (0);
+	return (0);
+}
+
+/**
  * process_line - process a line
  * @s: line
  * @st: e
@@ -12,9 +26,9 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 	char **tokens;
 	int i = 0, flag = 0, ind = 0, count = 0, needs_completion = 0;
 	instruction_t stack[] = {
-		{"push", process_push, 1},
-		{"pall", process_pall, 0},
-		{"", NULL, 0}
+		{"push", process_push},
+		{"pall", process_pall},
+		{"", NULL}
 	};
 	instruction_t *p;
 	void (*f)(stack_t **stack, unsigned int line_number);
@@ -27,7 +41,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number)
 		{
 			if (str_cmp(p->opcode, tokens[i]) == 0)
 			{
-				f = p->f, needs_completion = p->needs_completion;
+				f = p->f, needs_completion = get_na(p->opcode);
 				break;
 			}
 			p++, ind = (_strlen(tokens[i]) > 0) ? 1 : ind;

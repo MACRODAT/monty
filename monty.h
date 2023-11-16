@@ -1,6 +1,7 @@
 #ifndef MONTY
 #define MONTY
 
+#define  _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -30,7 +31,6 @@ typedef struct stack_s
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
- * @needs_completion: fuer
  *
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
@@ -39,7 +39,6 @@ typedef struct instruction_s
 {
 		char *opcode;
 		void (*f)(stack_t **stack, unsigned int line_number);
-		int needs_completion;
 } instruction_t;
 
 /**
@@ -55,7 +54,7 @@ typedef struct instruction_s
 typedef struct commons
 {
 		int n;
-		char *o;
+		int o;
 		char *x;
 		char *y;
 } commons_t;
@@ -77,6 +76,7 @@ int process_line(char *s, stack_t **st, unsigned int line_number);
 int process_line_cont(int i, int flag, int ind, char **tokens,
 	void (*f)(stack_t **stack, unsigned int line_number),
 	int needs_completion, stack_t **st, unsigned int line_number);
+int get_na(const char *opcode);
 
 void process_push(stack_t **stack, unsigned int line_number);
 void process_pall(stack_t **stack, unsigned int line_number);
