@@ -1,42 +1,10 @@
 #include "monty.h"
 
 /**
- * _rotl - rotates the first element to the bottom and  the second to the top
+ * _rotr - wef
  *
- * @duxj: head of the linked list
- * @leto: line number;
- * Return: no return
- */
-void _rotl(stack_t **duxj, unsigned int leto)
-{
-	stack_t *aux1 = NULL;
-	stack_t *aux2 = NULL;
-	(void)leto;
-
-	if (*duxj == NULL)
-		return;
-
-	if ((*duxj)->next == NULL)
-		return;
-
-	aux1 = (*duxj)->next;
-	aux2 = *duxj;
-
-	for (; aux2->next != NULL; aux2 = aux2->next)
-		;
-
-	aux1->prev = NULL;
-	aux2->next = *duxj;
-	(*duxj)->next = NULL;
-	(*duxj)->prev = aux2;
-	*duxj = aux1;
-}
-
-/**
- * _rotr - reverse the stack
- *
- * @duxj: head of the linked list
- * @leto: line number
+ * @duxj: heewf liwefefwst
+ * @leto: fwe
  * Return: no return
  */
 void _rotr(stack_t **duxj, unsigned int leto)
@@ -60,4 +28,36 @@ void _rotr(stack_t **duxj, unsigned int leto)
 	aux->prev = NULL;
 	(*duxj)->prev = aux;
 	*duxj = aux;
+}
+
+/**
+ * _rotl - wef weffwe
+ *
+ * @duxj: weft
+ * @leto: lfew;
+ * Return: eee
+ */
+void _rotl(stack_t **duxj, unsigned int leto)
+{
+	stack_t *hsjkjkkhdjk = NULL;
+	stack_t *tgsd = NULL;
+	(void)leto;
+
+	if (*duxj == NULL)
+		return;
+
+	if ((*duxj)->next == NULL)
+		return;
+
+	hsjkjkkhdjk = (*duxj)->next;
+	tgsd = *duxj;
+
+	for (; tgsd->next != NULL; tgsd = tgsd->next)
+		;
+
+	hsjkjkkhdjk->prev = NULL;
+	tgsd->next = *duxj;
+	(*duxj)->next = NULL;
+	(*duxj)->prev = tgsd;
+	*duxj = hsjkjkkhdjk;
 }
