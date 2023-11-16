@@ -7,8 +7,10 @@
 void endall(const char *msg)
 {
 	dprintf(2, "%s", msg);
-	free(comms.y);
-	fclose(comms.x);
+	if (comms.y)
+		free(comms.y);
+	if (comms.x)
+		fclose(comms.x);
 	exit(EXIT_FAILURE);
 }
 
@@ -23,8 +25,10 @@ void PFS(const char *format, ...)
 	va_start(args, format);
 	vfprintf(stderr, format, args);
 	va_end(args);
-	free(comms.y);
-	fclose(comms.x);
+	if (comms.y)
+		free(comms.y);
+	if (comms.x)
+		fclose(comms.x);
 	exit(EXIT_FAILURE);
 }
 
