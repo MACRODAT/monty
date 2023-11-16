@@ -12,6 +12,10 @@ int is_digit(char *c)
 	char *p = c;
 	int ascii;
 
+	if (!p)
+		return (0);
+	if (*p == '-')
+		p++;
 	while (*p)
 	{
 		ascii = (int) *p;
