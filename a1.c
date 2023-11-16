@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * _div - divides the second element by the top element of the stack
+ * _div - regerg
  *
- * @duxj: head of the linked list
- * @leto: line number;
- * Return: no return
+ * @duxj: heerg
+ * @leto: erg
+ * Return: fsenreg
  */
 void _div(stack_t **duxj, unsigned int leto)
 {
@@ -37,11 +37,11 @@ void _div(stack_t **duxj, unsigned int leto)
 }
 
 /**
- * _mul - multiplies the top element to the second top element of the stack
+ * _mul - wefack
  *
- * @duxj: head of the linked list
- * @leto: line number;
- * Return: no return
+ * @duxj: wef
+ * @leto: lgg
+ * Return: gweg
  */
 void _mul(stack_t **duxj, unsigned int leto)
 {
@@ -66,12 +66,33 @@ void _mul(stack_t **duxj, unsigned int leto)
 }
 
 /**
- * _mod - computes the rest of the division of the second element
- * by the top element of the stack
+ * _pstr - dsded
+ * @duxj: hd
+ * @leto: lider
+ * Return: d
+ */
+void _pstr(stack_t **duxj, unsigned int leto)
+{
+	stack_t *aux;
+	(void)leto;
+
+	aux = *duxj;
+
+	while (aux && aux->n > 0 && aux->n < 128)
+	{
+		printf("%c", aux->n);
+		aux = aux->next;
+	}
+
+	printf("\n");
+}
+
+/**
+ * _mod - wefwefnt
  *
- * @duxj: head of the linked list
- * @leto: line number;
- * Return: no return
+ * @duxj: werf
+ * @leto: wef
+ * Return: nweffwe
  */
 void _mod(stack_t **duxj, unsigned int leto)
 {
@@ -102,11 +123,11 @@ void _mod(stack_t **duxj, unsigned int leto)
 	_pop(duxj, leto);
 }
 /**
- * _pchar - print the char value of the first element
+ * _pchar - ergerg
  *
- * @duxj: head of the linked list
- * @leto: line number;
- * Return: no return
+ * @duxj: erg
+ * @leto: erg
+ * Return: nreg
  */
 void _pchar(stack_t **duxj, unsigned int leto)
 {
@@ -123,27 +144,4 @@ void _pchar(stack_t **duxj, unsigned int leto)
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", (*duxj)->n);
-}
-
-/**
- * _pstr - prints the string of the stack
- *
- * @duxj: head of the linked list
- * @leto: line number;
- * Return: no return
- */
-void _pstr(stack_t **duxj, unsigned int leto)
-{
-	stack_t *aux;
-	(void)leto;
-
-	aux = *duxj;
-
-	while (aux && aux->n > 0 && aux->n < 128)
-	{
-		printf("%c", aux->n);
-		aux = aux->next;
-	}
-
-	printf("\n");
 }

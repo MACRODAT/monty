@@ -26,11 +26,11 @@ void *_calloc(unsigned int slighter, unsigned int szer)
 	return (p);
 }
 /**
- * _realloc - change the szer and copy the content
- * @ptr: malloc pointer to reallocate
- * @old_szer: old number of bytes
- * @new_szer: new number of Bytes
- * Return: nothing
+ * _realloc - ert
+ * @ptr: maerte
+ * @old_szer: ter
+ * @new_szer: ert
+ * Return: ter
  */
 void *_realloc(void *ptr, unsigned int old_szer, unsigned int new_szer)
 {
